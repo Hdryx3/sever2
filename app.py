@@ -39,6 +39,8 @@ def generate_json(fields, num_entries=10):
                 entry[name] = fake.phone_number()
             elif field_type == "text":
                 entry[name] = fake.text()
+            elif field_type == "uuid4":
+                entry[name] = fake.uuid4()   
             elif field_type == "url":
                 entry[name] = fake.url()   
             else:
@@ -58,7 +60,7 @@ def generate():
         num_entries = request_data.get("num_entries", 10)
         
         # Validar si el número de entradas es excesivo
-        MAX_ENTRIES = 500  # Define el límite máximo de entradas permitidas
+        MAX_ENTRIES = 1000  # Define el límite máximo de entradas permitidas
         if num_entries > MAX_ENTRIES:
             return jsonify({"error": "Número de entradas excesivo"}), 400
 
