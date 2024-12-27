@@ -56,6 +56,11 @@ def generate():
         logging.debug("Datos recibidos: %s", request_data)
         fields = request_data.get("schema", [])  # Lista de campos
         num_entries = request_data.get("num_entries", 10)
+        
+        # Validar si el número de entradas es excesivo
+        MAX_ENTRIES = 1000  # Define el límite máximo de entradas permitidas
+        if num_entries > MAX_ENTRIES:
+            return jsonify({"error": "Número de entradas excesivo"}), 400
 
         # Validar datos de entrada
         if not isinstance(fields, list) or not all("name" in field and "type" in field for field in fields):
