@@ -58,7 +58,7 @@ def generate():
         num_entries = request_data.get("num_entries", 10)
         
         # Validar si el número de entradas es excesivo
-        MAX_ENTRIES = 1000  # Define el límite máximo de entradas permitidas
+        MAX_ENTRIES = 500  # Define el límite máximo de entradas permitidas
         if num_entries > MAX_ENTRIES:
             return jsonify({"error": "Número de entradas excesivo"}), 400
 
